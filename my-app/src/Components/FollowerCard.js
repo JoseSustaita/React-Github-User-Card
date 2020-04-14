@@ -19,7 +19,7 @@ class FollowerCard extends React.Component {
     return (
       <div className="App">
         <h2>Followers</h2>
-        <div className="container">
+        <div className="follower-container">
           {this.state.followerData.map((follower) => {
             return (
               <a href={follower.html_url} className="followerCard">
