@@ -1,36 +1,42 @@
 import React from "react";
 
-class UserCard extends React.Component {
+class Usercard extends React.Component {
   constructor() {
     super();
     this.state = {
-      avatar: [],
-      location: [],
+      userData: [],
     };
   }
+
   componentDidMount() {
-    console.log("Component did mount");
     fetch("https://api.github.com/users/josesustaita")
       .then((res) => res.json())
-      .then((user) => {
-        console.log(user);
-        this.setState({ avatar: user.avatar_url });
-        this.setState({ location: user.location });
-      })
-      .catch((err) => console.error(err));
+      .then((data) => this.setState({ userData: data }))
+      .catch((error) => console.log(error));
   }
   render() {
     console.log("rendering");
     console.log(this.state);
     return (
-      <div>
-        <div className="Usercard">
-          <h1>Hello I'm Jose!</h1>
-          <img src={this.props.avatar} alt="User Avatar" />
-          <h2>{this.props.location}</h2>
-        </div>
+      <div className="App">
+        <header>
+          <h1 className="title">Jose's Github!</h1>
+          <div className="container">
+            <div className="card">
+              <h4>Username: {this.state.userData.login}</h4>
+              <p>Followers: {this.state.userData.followers}</p>
+              <img
+                className="userCard_avatar"
+                alt="User Pic"
+                src={this.state.userData.avatar_url}
+              />
+              <p>Location: {this.state.userData.location}</p>
+              <a href={this.state.userData.html_url}>My Github</a>
+            </div>
+          </div>
+        </header>
       </div>
     );
   }
 }
-export default UserCard;
+export default Usercard;
