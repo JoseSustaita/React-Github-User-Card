@@ -1,0 +1,15 @@
+.title {
+  background-color: rgb(142, 143, 218);
+  border-bottom: 10px;
+}
+.App {
+  text-align: center;
+}
+.followerCard_avatar {
+  width: 200px;
+}
+.card-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
